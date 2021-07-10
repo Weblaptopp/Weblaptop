@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateNhacungcapTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('nhacungcap', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('TenNCC',100);
+            $table->string('DiaChi',100);
+            $table->string('DienThoai');
+            $table->string('Email',100);
+            $table->integer('TrangThai');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('nhacungcap');
+    }
+}
