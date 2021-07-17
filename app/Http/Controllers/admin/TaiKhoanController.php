@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TaiKhoan;
+use App\Models\User;
 use App\Classes\Helper;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +22,7 @@ class TaiKhoanController extends Controller
     }
     public function index()
     {
-        $taikhoan = TaiKhoan::all();
+        $taikhoan = User::all();
         return view($this->viewprefix.'index', compact('taikhoan'));
     }
     public function imageUpload(Request $request){
@@ -43,7 +43,7 @@ class TaiKhoanController extends Controller
      */
     public function create()
     {
-        $taikhoan = TaiKhoan::all();
+        $taikhoan = User::all();
         return view($this->viewprefix.'create',['taikhoan'=>$taikhoan]);
     }
 
@@ -55,7 +55,7 @@ class TaiKhoanController extends Controller
      */
     public function store(Request $request)
     {
-        $taikhoan = new TaiKhoan();
+        $taikhoan = new User();
         $this->validate($request, [
             'HoVaTenND' => 'required',
             'UserName' => 'required',
@@ -104,7 +104,7 @@ class TaiKhoanController extends Controller
      */
     public function edit($id)
     {
-        $taikhoan= TaiKhoan::find($id);
+        $taikhoan= User::find($id);
         return view($this->viewprefix.'edit')->with('taikhoan', $taikhoan);
     }
 
@@ -115,7 +115,7 @@ class TaiKhoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TaiKhoan $taikhoan)
+    public function update(Request $request, User $taikhoan)
     {
         $data=$request->validate([
             'HoVaTenND' => 'required',
@@ -147,7 +147,7 @@ class TaiKhoanController extends Controller
      */
     public function destroy($id)
     {
-        $taikhoan=TaiKhoan::find($id);
+        $taikhoan=User::find($id);
         if( $taikhoan->TrangThai==0){
             $taikhoan->TrangThai=1;
         }else {

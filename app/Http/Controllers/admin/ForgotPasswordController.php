@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use App\Models\TaiKhoan;
+use App\Models\User;
 use Carbon\Carbon;
 use Mail;
 use Illuminate\Support\Str;
@@ -22,7 +22,7 @@ class ForgotPasswordController extends Controller
         $data=$request->all();
         $now=Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
         $title_mail="Lấy lại mật khẩu mail".' '.$now;
-        $email=TaiKhoan::where('Email','=',$data['Email'])->get();
+        $email=User::where('Email','=',$data['Email'])->get();
         foreach($email as $key=>$value){
             $email_id=$value->id;
                                         }
@@ -34,7 +34,7 @@ class ForgotPasswordController extends Controller
             }
             else{
                 $token_ramdom=Str::random();
-                $email=TaiKhoan::find($email_id);
+                $email=User::find($email_id);
                 $email->code=$token_ramdom;
                 $email->save();
                 $to_email=$data['Email'];
@@ -58,13 +58,13 @@ class ForgotPasswordController extends Controller
     {
         $data=$request->all();
         $token_ramdom=Str::random();
-        $email=TaiKhoan::where($request->Email)->where($request->code)->get();
+        $email=User::where($request->Email)->where($request->code)->get();
         $count=$email->count();
         if($count>0){
             foreach($email as $key=>$value){
                 $id=$value->id;
                                             }
-             $reset  =  TaiKhoan::find($id);   
+             $reset  =  User::find($id);   
              $reset->password=Hash::make($data['password_account']);           
              $reset->code=$token_ramdom;   
              $reset->save(); 

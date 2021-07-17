@@ -171,20 +171,21 @@
 				<div class="products-right-grid">
 					<div class="products-right-grids animated wow slideInRight" data-wow-delay=".5s">
 						<div class="sorting">
-							<select id="country" onchange="change_country(this.value)" class="frm-field required sect">
+							<select id="sort" onchange="change_country(this.value)" class="frm-field required sect">
 								<option value="null">Sắp xếp </option>
 								<option value="null">Bán chạy nhất</option> 
-								<option value="null">Phổ biến nhất</option> 
-								<option value="null">Giá thấp đến cao</option>					
-								<option value="null">Giá cao đến thấp</option>								
+								<option value="{{Request::url()}}?sort_by=pho_bien">Phổ biến nhất</option> 
+								<option value="{{Request::url()}}?sort_by=tang_dan">Giá thấp đến cao</option>					
+								<option value="{{Request::url()}}?sort_by=giam_dan">Giá cao đến thấp</option>
+								<option value="{{Request::url()}}?sort_by=kytu_tangdan">Từ A đến Z</option>
+								<option value="{{Request::url()}}?sort_by=kytu_giamdan">Từ Z đến A</option>								
 							</select>
 						</div>
 						<div class="sorting-left">
-							<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-								<option value="null">Hiển thị 9 sản phẩm</option>
-								<option value="null">Hiển thị 18 sản phẩm</option> 
-								<option value="null">Hiển thị 32 sản phẩm</option>					
-								<option value="null">Tất cả</option>								
+							<select id="sort1" onchange="change_country(this.value)" class="frm-field required sect">
+							<option value="">Hiển thị sản phẩm</option>
+							<option value="{{Request::url()}}?sort_by1=hienthi9sp">Hiển thị 9 sản phẩm</option>					
+							<option value="{{Request::url()}}?sort_by1=hienthitatca">Tất cả</option>							
 							</select>
 						</div>
 						<div class="clearfix"> </div>
@@ -218,7 +219,9 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="col-md-4 products-right-grids-bottom-grid">
+						
 					@endforeach
 				</div>
 					
@@ -240,7 +243,28 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-
+	<script type="text/javascript">
+$(document).ready(function(){
+	$('#sort').on('change',function(){
+		var url=$(this).val();
+		if(url){
+			window.location=url;
+		}
+		return false;
+	});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#sort1').on('change',function(){
+		var url=$(this).val();
+		if(url){
+			window.location=url;
+		}
+		return false;
+	});
+});
+</script>
 
 	
    

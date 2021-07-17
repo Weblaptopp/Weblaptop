@@ -21,7 +21,7 @@ class CreateAddForeignKeyTable extends Migration
 
         //Khoa ngoai bang don hang
         Schema::table('donhang', function (Blueprint $table) {
-            $table->foreign('HoTenKH')->references('id')->on('taikhoan');
+            $table->foreign('HoTenKH')->references('id')->on('user');
         });
 
         //Khoa ngoai bang chi tiet don hang
@@ -37,7 +37,7 @@ class CreateAddForeignKeyTable extends Migration
         //Khoa ngoai bang binh luan
         Schema::table('binhluan', function (Blueprint $table) {
             $table->foreign('IdSP')->references('id')->on('sanpham');
-            $table->foreign('IdKH')->references('id')->on('taikhoan');
+            $table->foreign('IdKH')->references('id')->on('user');
         });
 
         //khoa ngoai bang bao hanh

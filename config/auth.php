@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\TaiKhoan::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [

@@ -9,6 +9,7 @@ use App\Models\TaiKhoan;
 use App\Models\SanPham;
 use App\Classes\Helper;
 use Hash;
+use DB;
 class PageController extends Controller
 {
     /**
@@ -36,8 +37,60 @@ public function checkout()
     }
     public function product()
     {
+        
         $sanphams = SanPham::where('TrangThai',1)->paginate(9);
-       
+        if(isset($_GET['sort_by'])){
+            $sort_by=$_GET['sort_by'];
+            if($sort_by=='giam_dan'){
+                $sanphams=DB::table('sanpham')
+                ->where('TrangThai',1)
+                ->orderBy('Gia', 'desc')
+                ->paginate(9)->appends(request()->query());
+            
+            }
+            elseif($sort_by=='tang_dan'){
+                $sanphams=DB::table('sanpham')
+                ->where('TrangThai',1)
+                ->orderBy('Gia', 'asc')
+                ->paginate(9)->appends(request()->query());
+               
+            }
+            elseif($sort_by=='pho_bien'){
+                $sanphams=DB::table('sanpham')
+                ->where('TrangThai',1)
+                ->paginate(9)->appends(request()->query());
+               
+            }
+            elseif($sort_by=='kytu_tangdan'){
+                $sanphams=DB::table('sanpham')
+                ->where('TrangThai',1)
+                ->orderBy('TenSP', 'asc')
+                ->paginate(9)->appends(request()->query());
+               
+            }
+            elseif($sort_by=='kytu_giamdan'){
+                $sanphams=DB::table('sanpham')
+                ->where('TrangThai',1)
+                ->orderBy('TenSP', 'desc')
+                ->paginate(9)->appends(request()->query());
+               
+            }
+           
+        }
+        else{
+                $sort_by1=isset($_GET['sort_by1']);
+            if($sort_by1=='hienthi9sp'){
+                $sanphams=SanPham::where('TrangThai',1)
+                ->take(9)->paginate(9);
+            
+            
+            }
+            elseif($sort_by1=='hienthitatca'){
+                $sanphams=SanPham::where('TrangThai',1)
+                ->paginate(9);
+            
+            }
+        }
         return view($this->viewprefix.'product',compact('sanphams'));
     }
      //tim kiem san pham
@@ -53,7 +106,11 @@ public function checkout()
     public function single($id)
     {
         $sanpham = SanPham::where('id',$id)->where('TrangThai',1)->get();
-        return view($this->viewprefix.'single',compact('sanpham'));
+        $sanphamlq = SanPham::inRanDomOrder()
+        ->where('TrangThai',1)
+        ->take(4)
+        ->get();
+        return view($this->viewprefix.'single',compact('sanpham','sanphamlq'));
     }
     public function register()
     {

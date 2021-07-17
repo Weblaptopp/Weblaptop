@@ -19,6 +19,6 @@ class DonHang extends Model
     ];
     public function TaiKhoan()
     {
-        return $this->belongsTo('App\Models\TaiKhoan','HoTenKH','id');
+        return $this->belongsTo('App\Models\User','HoTenKH','id');
     }
 }

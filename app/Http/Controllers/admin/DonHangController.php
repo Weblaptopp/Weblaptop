@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DonHang;
-use App\Models\TaiKhoan;
+use App\Models\User;
 use Session;
 
 
@@ -34,7 +34,7 @@ class DonHangController extends Controller
      */
     public function create()
     {
-        $taikhoan = TaiKhoan::all();
+        $taikhoan = User::all();
         return view($this->viewprefix.'create',['taikhoan'=>$taikhoan]);
     }
 
@@ -90,7 +90,7 @@ class DonHangController extends Controller
     public function edit($id)
     {
         $donhang= DonHang::find($id);//Kho tên model
-        $taikhoan = TaiKhoan::all();
+        $taikhoan = User::all();
         return view($this->viewprefix.'edit',$donhang,['taikhoan'=>$taikhoan])->with('donhang', $donhang);
     }
 

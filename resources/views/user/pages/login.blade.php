@@ -11,13 +11,14 @@
 	</div>
 <!-- //breadcrumbs -->
 <!-- login -->
-	<div class="login">
+<div class="login">
 		<div class="container">
 			<h3 class="animated wow zoomIn" data-wow-delay=".5s">ĐĂNG NHẬP</h3>
 			<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-				<form>
-					<input type="email" placeholder="Email" required=" " >
-					<input type="password" placeholder="Mật Khẩu" required=" " >
+				<form action="{{route('getLogin1')}}" method="post">
+				{{ csrf_field() }}
+					<input type="Email" placeholder="Email" required=" "  id="Email" name="txtEmail" >
+					<input type="password" placeholder="Mật Khẩu" required=" " id="password" name="txtMatKhau" >
 					<div class="forgot">
 						<a href="#">Quên mật khẩu?</a>
 					</div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BinhLuan;
-use App\Models\TaiKhoan;
+use App\Models\User;
 use App\Models\SanPham;
 use Session;
 
@@ -24,7 +24,7 @@ class BinhLuanController extends Controller
     }
     public function index()
     {
-        $binhluan = BinhLuan::all();
+        $binhluan = User::all();
         return view($this->viewprefix.'index', compact('binhluan'));
     }
 
@@ -35,7 +35,7 @@ class BinhLuanController extends Controller
      */
     public function create()
     {
-        $taikhoan = TaiKhoan::all();
+        $taikhoan = User::all();
         $sanpham = SanPham::all();
         return view($this->viewprefix.'create',['taikhoan'=>$taikhoan],['sanpham'=>$sanpham]);
     }
@@ -90,7 +90,7 @@ class BinhLuanController extends Controller
     public function edit($id)
     {
         $binhluan= BinhLuan::find($id);//Kho tên model
-        $taikhoan = TaiKhoan::all();
+        $taikhoan = User::all();
         $sanpham = SanPham::all();
         return view($this->viewprefix.'edit',$binhluan,['taikhoan'=>$taikhoan,'sanpham'=>$sanpham])->with('binhluan', $binhluan);
     }

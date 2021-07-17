@@ -42,7 +42,9 @@ Route::group(['prefix' => 'user', 'namespace' => 'user'], function() {
     Route::get('product','PageController@product')->name('user.product');
     Route::get('single{id}','PageController@single')->name('user.single');
     Route::get('register','PageController@register')->name('user.register');
-    Route::get('login','PageController@login')->name('user.login');
+    Route::get('login','LoginController@getLogin1')->name('getLogin1');
+    Route::post('login','LoginController@postLogin1')->name('postLogin1');
+    Route::get('logout','LoginController@getLogout1')->name('getLogout1');
     Route::post('user/register','PageController@postRegister')->name('postRegister');
     Route::get('search','PageController@Search')->name('Search');
 });

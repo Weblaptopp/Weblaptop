@@ -362,11 +362,12 @@
 			<p class="est animated wow slideInUp" data-wow-delay=".5s"></p>
 			<div class="new-collections-grids">
 				<div class="col-md-3 new-collections-grid">
+          @foreach($sanphamlq as $sanpham)
 					<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".5s">
 						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="images/8.jpg" alt=" " class="img-responsive"></a>
+							<a href="single.html" class="product-image"><img src="{!! asset('image/'.$sanpham->HinhAnh)!!}" alt=" " class="img-responsive"></a>
 							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">Quick View</a>
+								<a href="{{route('user.single',$sanpham->id)}}">Quick View</a>
 							</div>
 							<div class="new-collections-grid1-right">
 								<div class="rating">
@@ -389,117 +390,16 @@
 								</div>
 							</div>
 						</div>
-						<h4><a href="single.html">Dell Vostro 3500 i5 1135G7</a></h4>
+						<h4><a href="{{route('user.single',$sanpham->id)}}l">{{$sanpham->TenSP}}</a></h4>
 						<p>Vel illum qui dolorem eum fugiat.</p>
 						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><span class="item_price">$150</span><a class="item_add" href="#">Mua Ngay</a></p>
+							<p><span class="item_price">{{$sanpham->Gia}}0.000đ</span><a class="item_add" href="#">Mua Ngay</a></p>
 						</div>
 					</div>
+			
 				</div>
 				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".5s">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="images/13.jpg" alt=" " class="img-responsive"></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">Quick View</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">Laptop Lenovo IdeaPad Flex 5</a></h4>
-						<p>Vel illum qui dolorem eum fugiat.</p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><span class="item_price">$200</span><a class="item_add" href="#">Mua Ngay </a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".5s">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="images/2.jpg" alt=" " class="img-responsive"></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">Quick View</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">Laptop Dell Inspiron 7400</a></h4>
-						<p>Vel illum qui dolorem eum fugiat.</p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p> <span class="item_price">$150</span><a class="item_add" href="#">Mua Ngay </a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".8s">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="images/11.jpg" alt=" " class="img-responsive"></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">Quick View</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">Laptop HP Pavilion 15 </a></h4>
-						<p>Vel illum qui dolorem eum fugiat.</p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p> <span class="item_price">$257</span><a class="item_add" href="#">Mua Ngay</a></p>
-						</div>
-					</div>
+        @endforeach
 				</div>
 				<div class="clearfix"> </div>
 			</div>

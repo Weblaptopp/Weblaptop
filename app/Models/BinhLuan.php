@@ -21,6 +21,6 @@ class BinhLuan extends Model
     }
     public function TaiKhoan()
     {
-        return $this->belongsTo('App\Models\TaiKhoan','IdKH','id');
+        return $this->belongsTo('App\Models\User','IdKH','id');
     }
 }
