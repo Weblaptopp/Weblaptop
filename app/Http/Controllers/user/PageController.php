@@ -37,6 +37,10 @@ public function checkout()
     }
     public function product()
     {
+        $sanphammoi=SanPham::inRanDomOrder()
+       -> where('Trangthai',1)->where('TenDM',6)
+       ->take(3)
+       ->get();
         
         $sanphams = SanPham::where('TrangThai',1)->paginate(9);
         if(isset($_GET['sort_by'])){
@@ -91,12 +95,12 @@ public function checkout()
             
             }
         }
-        return view($this->viewprefix.'product',compact('sanphams'));
+        return view($this->viewprefix.'product',compact('sanphams','sanphammoi'));
     }
      //tim kiem san pham
      public function Search(Request $request)
      {
-         $kq = SanPham::where('TenSP','like','%'.$request->key.'%')->where('TrangThai',1)->get();
+         $kq = SanPham::where('TenSP','like','%'.$request->key.'%')->where('TrangThai',1)->paginate(9);
           return view($this->viewprefix.'search',compact('kq'));
             
          

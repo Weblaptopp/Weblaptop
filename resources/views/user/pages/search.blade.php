@@ -73,6 +73,7 @@
 					  </a>
 					</li>
 					@endif
+					{{$kq->links()}}
 					  </a>
 					</li>
 				  </ul>
